@@ -4,7 +4,8 @@ var sd = {};
 
 sd.readData = function(fileName){
   return fs.readFileSync(fileName,'utf-8');
-}
+};
+
 sd.addDetail = function(roll,name,percentage){
   var details = {RollNo:'',Name:'',Percentage:''};
   details.RollNo = roll;
@@ -12,6 +13,8 @@ sd.addDetail = function(roll,name,percentage){
   details.Percentage = percentage;
   var text = sd.readData('record.txt');
   var records = JSON.parse(text);
+  if(records.hasOwnProperty(roll))
+    return {RollNo:"Already Present",Name:"Not Inserted",Percentage:""};
   records[roll] = details;
   text = JSON.stringify(records);
   fs.writeFileSync('record.txt',text);
@@ -24,7 +27,6 @@ sd.list = function(text){
   keysInRecord = Object.keys(JSON.parse(text));
   var text = JSON.parse(text);
   var result = [],index = 0;
-  console.log(keysInRecord);
   keysInRecord.forEach(function(fields){
     result[index] = text[fields].RollNo+'\t\t'+text[fields].Name+'\t\t'+text[fields].Percentage;
     index++;
@@ -33,15 +35,16 @@ sd.list = function(text){
 };
 
 sd.perform =  function(data,methodName){
-  console.log(methodName);
   var text = sd.readData("record.txt");
   var operations = {
     add : function(){var res = {data : sd.addDetail(data.rn,data.name,data.percentage)};
-                    return sd.list(JSON.stringify(res));},
+            return sd.list(JSON.stringify(res));},
     list : function(){return sd.list(text);}
   };
-  
-  return operations[methodName]();
+  var no_method = function(args)
+  {return "The available functionalities are\n 1. Add \n 2. List \n 3. Search";};
+  var method = operations[methodName] || no_method;
+  return method();
 };
 
 exports.sd = sd;
