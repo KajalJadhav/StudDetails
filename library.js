@@ -34,17 +34,45 @@ sd.list = function(text){
   return field+result.join('\r\n');
 };
 
+sd.searchRecord = function(record,search,field){
+  if(field == 'RollNo') field = 'RollNo'
+  var data = JSON.parse(record);
+  if(!search) return "Please specify record to be searched";
+  var keysInRecord = Object.keys(data);
+  var recordFields = ["RollNo", "Name", "Percentage"];
+  if(field == null){
+    var filteredKeys = keysInRecord.filter(function (key){
+      return recordFields.some(function (field){
+        var detail = !data[key][field] ? "" : data[key][field];
+        return detail.toLowerCase().toString().indexOf(search.toLowerCase()) > -1
+      });
+    });
+  }
+  else
+  {
+    var filteredKeys = keysInRecord.filter(function(key){
+      var detail = !data[key][field] ? "" : data[key][field];
+      return detail.toLowerCase().toString().indexOf(search.toLowerCase()) > -1;
+    });
+  }
+  var result = {}; 
+  for (var counter = 0; counter < filteredKeys.length; counter++)
+    result[filteredKeys[counter]] = data[filteredKeys[counter]];
+  var result = sd.list(JSON.stringify(result));
+  return result;    
+};
+
 sd.perform =  function(data,methodName){
   var text = sd.readData("record.txt");
   var operations = {
     add : function(){var res = {data : sd.addDetail(data.rn,data.name,data.percentage)};
-            return sd.list(JSON.stringify(res));},
-    list : function(){return sd.list(text);}
+                    return sd.list(JSON.stringify(res));},
+    list : function(){return sd.list(text);},
+    search : function(){return sd.searchRecord(text,data.rn,'RollNo');}
   };
   var no_method = function(args)
   {return "The available functionalities are\n 1. Add \n 2. List \n 3. Search";};
   var method = operations[methodName] || no_method;
   return method();
 };
-
 exports.sd = sd;
