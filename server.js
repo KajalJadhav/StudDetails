@@ -10,6 +10,7 @@ var ConnectionListener = function (req,res){
 	data.name = requrl.query.NM;
 	data.percentage = requrl.query.per;
 	var method = requrl.pathname.slice(1);
+	var field = requrl.query
 	res.write(" "+sd.perform(data,method));
 	res.end();
 };

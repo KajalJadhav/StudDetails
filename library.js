@@ -71,8 +71,9 @@ sd.perform =  function(data,methodName){
     search : function(){return sd.searchRecord(text,data.rn,'RollNo');}
   };
   var no_method = function(args)
-  {return "The available functionalities are\n 1. Add \n 2. List \n 3. Search";};
-  var method = operations[methodName] || no_method;
-  return method();
+  {
+    return "The available functionalities are\n 1. Add \n 2. List \n 3. Search";};
+    var method = operations[methodName] || no_method;
+    return method();
 };
 exports.sd = sd;
