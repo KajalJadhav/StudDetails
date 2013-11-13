@@ -1,11 +1,13 @@
 var http = require('http');
-var fs = require("fs");
 var sd = {};
+sd.fs = require("fs");
 
-sd.readData = function(fileName){
-  return fs.readFileSync(fileName,'utf-8');
+sd.readData = function(){
+  return sd.fs.readFileSync('record.txt','utf-8');
 };
-
+sd.writeData = function(text){
+  sd.fs.writeFileSync('record.txt',text,'utf-8');
+}
 sd.addDetail = function(roll,name,percentage){
   var details = {RollNo:'',Name:'',Percentage:''};
   var result = {};
@@ -14,13 +16,13 @@ sd.addDetail = function(roll,name,percentage){
   details.RollNo = roll;
   details.Name = name;
   details.Percentage = percentage;
-  var text = sd.readData('record.txt');
+  var text = sd.readData();
   var records = JSON.parse(text);
   if(records.hasOwnProperty(roll))
     return "Record already Exists.......";
   records[roll] = details;
   text = JSON.stringify(records);
-  fs.writeFileSync('record.txt',text);
+  sd.writeData(text);
   result.added = details;
   return sd.list(JSON.stringify(result));
 };

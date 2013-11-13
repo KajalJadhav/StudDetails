@@ -6,8 +6,8 @@ var ConnectionListener = function (req,res){
 	var requrl = url.parse(req.url,true);
 	res.writeHead(200, {"Content-Type": "text/plain"});
 	var data = {};
-	data.rn = requrl.query.RN;
-	data.name = requrl.query.NM;
+	data.rn = requrl.query.roll;
+	data.name = requrl.query.name;
 	data.percentage = requrl.query.per;
 	var method = requrl.pathname.slice(1);
 	res.write(" "+sd.perform(data,method));
