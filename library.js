@@ -14,8 +14,8 @@ sd.addDetail = function(roll,name,percentage){
   if(!roll)
     return "RollNo is mandatory.....";
   details.RollNo = roll;
-  details.Name = name;
-  details.Percentage = percentage;
+  details.Name = name || "";
+  details.Percentage = percentage || "";
   var text = sd.readData();
   var records = JSON.parse(text);
   if(records.hasOwnProperty(roll))
@@ -49,7 +49,17 @@ sd.searchRecord = function(record,fieldValue){
   result[fieldValue] = data[fieldValue];
   return sd.list(JSON.stringify(result));
 };
-
+// sd.sortRecord = function(){
+//   var text = sd.readData();
+//   var data = JSON.parse(text);
+//   var studentKeys = Object.keys(data);
+//   console.log(studentKeys)
+//   var students = [];
+//   studentKeys.forEach(function(rollNo){
+//     students.push(data[rollNo]);
+//   });
+//   // console.log(students);
+// }
 sd.perform =  function(data,methodName){
   var text = sd.readData("record.txt");
   var operations = {
@@ -59,7 +69,7 @@ sd.perform =  function(data,methodName){
   };
   var no_method = function(args)
   {
-    return "The available functionalities are\n 1. Add \n 2. List \n 3. Search";};
+    return "The available functionalities are\r\n 1. Add \r\n 2. List \r\n 3. Search";};
     var method = operations[methodName] || no_method;
     return method();
 };

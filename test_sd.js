@@ -1,12 +1,10 @@
 var test = {};
 var sd = require('./library.js').sd;
-var mocks_fs = require('./mocks.js').mocks_fs;
 var assert = require('assert');
 var mockfs = require('./mockfs.js').mockfs;
 
 var getRecordbyroll = function(roll,text){
 	var data = JSON.parse(text);
-	// console.log(data[roll])
 	return data[roll];
 };
 
@@ -98,4 +96,14 @@ test._10_gives_message_if_roll_number_is_not_specified = function(){
 	assert.deepEqual(expected,actual); 
 };
 
+// test._11_gives_list_of_student_sorted_by_percentage = function(){
+// var data = {100:{RollNo:100,Name:"Kajal",Percentage:76},
+// 				110:{RollNo:110,Name:"Sayali",Percentage:56},
+// 			111:{RollNo:111,Name:"Sayali",Percentage:56}};
+// 	mockfs.data = JSON.stringify(data);
+// 	sd.fs = mockfs;
+// 	var expected = ["RollNo\t\t\tName\t\t\tPercentage","100\t\t\tKajal\t\t\t56","110\t\t\tSayali\t\t\t76"];
+// 	var actual = sd.sortRecord();
+// 	assert.deepEqual(expected,actual);
+// }
 exports.test = test;
