@@ -4,7 +4,7 @@ var home_page = fs.readFileSync('./public/html/index.html');
 var add = fs.readFileSync('./public/html/add.html');
 var search = fs.readFileSync('./public/html/search.html');
 var sd = require('./library.js').sd;
-var recordFileName = './public/text/record.txt';
+var recordFileName = './record.txt';
 
 var data = {rn:''};
 
@@ -16,12 +16,8 @@ routes['/'] = function(req,res){
 
 routes['/list'] = function(req,res){
 	res.writeHead(200, {"Content-Type": "text/html"});
-	var onReadData = function(err,text){
-		if (err) throw err;
-		res.write(sd.list(text));
-		res.end();
-	};
-	fs.readFile(recordFileName,'utf-8',onReadData);
+	res.write(sd.list(JSON.stringify(sd.records)));
+	res.end();
 };
 
 routes['/add'] = function(req,res){
@@ -41,13 +37,9 @@ routes['/search'] = function(req,res){
 		res.end()
 		return;
 	}
-	var onReadData = function(err,text){
-		if(err) throw err;
-		var result = sd.searchRecord(text,data.rn);
-		res.write(result);
-		res.end();
-	};
-	fs.readFile(recordFileName,'utf-8',onReadData);
+	var result = sd.searchRecord(JSON.stringify(sd.records),data.rn);
+	res.write(result);
+	res.end();
 }
 exports.data = data;
 exports.routes = routes;

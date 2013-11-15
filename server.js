@@ -1,7 +1,7 @@
 var http = require('http');
 var url = require('url');
-var sd = require('./public/javascript/library.js').sd;
-var handler = require('./public/javascript/handler'); 
+var sd = require('./library.js').sd;
+var handler = require('./handler'); 
 var routes = handler.routes;
 var data = handler.data;
 
@@ -23,4 +23,3 @@ var ConnectionListener = function (req,res){
 var server = http.createServer(ConnectionListener);
 server.listen(8088);
 console.log('server is listening at port 8088');
-

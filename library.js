@@ -2,7 +2,9 @@ var http = require('http');
 var sd = {};
 sd.fs = require("fs");
 var list = sd.fs.readFileSync('./public/html/list.html','utf-8');
-var recordFileName = './public/text/record.txt';
+var recordFileName = './record.txt';
+sd.records = sd.fs.readFileSync(recordFileName,'utf-8');
+sd.records = JSON.parse(sd.records);
 
 sd.readData = function(){
   return sd.fs.readFileSync(recordFileName,'utf-8');
@@ -17,16 +19,11 @@ sd.addDetail = function(roll,name,percentage){
   details.RollNo = roll;
   details.Name = name || "";
   details.Percentage = percentage || "";
-  var onReadComplete = function(err,text){
-    if(err) throw err;
-    var records = JSON.parse(text);
-    if(records.hasOwnProperty(roll))
+  if(sd.records.hasOwnProperty(roll))
       return "Record already Exists.......";
-    records[roll] = details;
-    text = JSON.stringify(records);
-    sd.writeData(text);
-  };
-  sd.fs.readFile(recordFileName,'utf-8',onReadComplete);
+  sd.records[roll] = details;
+  text = JSON.stringify(sd.records);
+  sd.writeData(text);
   result.added = details;
   return sd.list(JSON.stringify(result));
 };
@@ -41,7 +38,7 @@ var getFieldRecords = function(result,text){
   };
 };
 sd.list = function(text){
-  if(text == '{}') return 'No records available';
+  if(text == '{}') return 'No sd.records available';
   keysInRecord = Object.keys(JSON.parse(text));
   var text = JSON.parse(text);
   var result = [];
@@ -52,9 +49,6 @@ sd.list = function(text){
 
 sd.searchRecord = function(record,fieldValue){
   var data = JSON.parse(record);
-  if(!fieldValue) return "Please specify fieldValue to be searched";
-  if(isNaN(fieldValue))
-    return "RollNo should be Number....."
   var result = {};
   if(!data.hasOwnProperty(fieldValue))
     return "Record not Present";

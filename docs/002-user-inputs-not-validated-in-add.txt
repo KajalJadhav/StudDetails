@@ -1,0 +1,9 @@
+
+
+
+Adding details in record
+Roll No: 	
+Name: 	
+Percentage: 	
+
+

@@ -1,0 +1,2 @@
+Give empty roll number and fill other fields and submit.
+The page cleans up every field and does not tell the user that roll id is mandatory.
