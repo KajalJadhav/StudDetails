@@ -1,10 +1,20 @@
 <html>
 <head>
 	<title>Student Details</title>
+	<script type="text/javascript">
+		var numValidation = function(evt){
+	    var charCode = event.keyCode
+	    if (charCode > 31 && (charCode < 48 || charCode > 57)){
+	    	alert('use only numbers');
+	    	return false;
+	    }
+	    return true;
+		}
+	</script>
 </head>
 <body>
-	<form action = "http://10.4.31.161:8088/search" method = "get">
-		Roll No : <input type = "text" name = "roll"><br>
+	<form action = "/search" method = "get">
+		Roll No : <input type = "text" name = "roll" onkeypress="return numValidation(event)" required><br>
 		<input type = "submit" value = "search">
 	</form>
 </body>
