@@ -1,10 +1,11 @@
 <html>
 <head>
 	<title>Student Details</title>
+	<script type="text/javascript" src = './validation'></script>
 </head>
 <body>
-	<form action = "http://192.168.0.102:8088/search" method = "get">
-		Roll No : <input type = "text" name = "roll"><br>
+	<form action = "/search" method = "get">
+		Roll No : <input type = "text" name = "roll" onkeypress="return numValidation(event)" required><br>
 		<input type = "submit" value = "search">
 	</form>
 </body>

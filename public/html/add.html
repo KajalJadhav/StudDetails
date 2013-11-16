@@ -1,16 +1,17 @@
 <html>
 <head>
 	<title>Student Details</title>
+	<script type="text/javascript" src = './validation'></script>
 </head>
 <body>
 	<table><br/><br/><tr><td><h3><u> Adding details in record </u></td></tr></h3>
-	<form action = "http://192.168.0.102:8088/add" method = "get">
+	<form action = "/add" method = "get">
 		<tr><td>Roll No: </td>
-			<td><input type="text" name = "roll"></td><br>
+			<td><input type="text" name = "roll" onkeypress="return numValidation(event)" required /></td><br>
 		<tr><td>Name:	</td>
-			<td><input type="text" name = "name"></td><br>
+			<td><input type="text" name = "name" /></td><br>
 		<tr><td>Percentage: </td>	
-			<td><input type="text" name = "per"></td><br>
-		<tr><td><input type = "submit" value = "add"></td></tr>
+			<td><input type="text" name = "per" id = "percent" onkeypress="return numValidation(event)"\></td><br>
+		<tr><td><input type = "submit" value = "add" onclick = "return validatePercentage()"/></td></tr>
 	</form></table><br/><br/><br/>
 </body>
