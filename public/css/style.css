@@ -1,0 +1,33 @@
+body {
+  padding-left: 16em;
+  font-family:Georgia,"Times New Roman",
+  Times,serif;
+  color: purple;
+}
+  h1 {font-family: cursive;
+    font-size:450%;}
+    p {font-family:sans-serif;
+    font-size:150%;}
+ul.optionbar {
+  list-style-type: none;
+  padding: 4;
+  margin: 4;
+  position: absolute;
+  top: 7em;
+  left: 1em;
+  width: 8em}
+ul.optionbar li {
+  background: #9999CC;
+  margin: 0.5em 0;
+  padding: 0.3em;
+  border-right: 1em solid}
+ul.optionbar a {
+  text-decoration: bold; }
+a:link {
+  color:purple}
+a:visited {
+  color: blue }
+address {
+  margin-top: 3em;
+  padding-top:3em;
+  border-top: dotted; }

@@ -1,0 +1,6 @@
+<ul class="optionbar">
+        <li><a href="/home">Home</a>
+        <li><a href="/add">Add student details </a>
+        <li><a href="/list">List student details</a>
+        <li><a href="/search">Search student details</a>
+</ul>

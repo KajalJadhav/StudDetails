@@ -1,13 +1,14 @@
 var http = require('http');
 var url = require('url');
 var sd = require('./public/javascript/library.js').sd;
-var routes = require('./public/javascript/handler').routes;
-var data = require('./public/javascript/handler').data;
+var routes = require('./public/javascript/handler.js').routes;
+var data = require('./public/javascript/handler.js').data;
 
 var no_method = function(req,res){
 	return sd.perform();
 };
 var ConnectionListener = function (req,res){
+	req.pipe(process.stdout);
 	var requrl = url.parse(req.url,true);
 	res.writeHead(200, {"Content-Type": "text/html"});
 	data.rn = requrl.query.roll;
