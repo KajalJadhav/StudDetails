@@ -1,18 +1,19 @@
 <html>
 <head>
 	<title>Student Details</title>
-    <link rel="stylesheet" href="defaultStyle">
+	<link rel = "styleSheet" href = "./studentDetails.css">
+	<script type="text/javascript" src = './validate.js'></script>
 </head>
-<body background = "pink">
-    {links}
-<table><br/><br/><tr><td><h3><u> Adding details in record </u></td></tr></h3>
-	<form action = "http://10.4.31.161:8088/add" method = "post">
+<body>
+	<form action = "/add" method = "post">
+	{home}
+	<table><br/><br/><tr><td><h3><u> Adding details in record </u></td></tr></h3>
 		<tr><td>Roll No: </td>
-			<td><input type="text" name = "roll"></td><br>
+			<td><input type="text" name = "roll" onkeypress="return numValidation(event)" required /></td><br>
 		<tr><td>Name:	</td>
-			<td><input type="text" name = "name"></td><br>
+			<td><input type="text" name = "name" /></td><br>
 		<tr><td>Percentage: </td>	
-			<td><input type="text" name = "per"></td><br>
-		<tr><td><input type = "submit" value = "add"></td></tr>
-	</form></table><br/><br/><br/>
+			<td><input type="text" name = "per" id = "percent" onkeypress="return numValidation(event)"\></td><br>
+		<tr><td><input type = "submit" value = "add" onclick = "return validatePercentage()"/></td></tr>
+	</table></form><br/><br/><br/>
 </body>

@@ -1,0 +1,33 @@
+
+
+Adding details in record
+Roll No: 	
+Name: 	
+Percentage: 	
+
+
+
+Roll No 	Name 	Percentage
+56	Kajal	98
+100	123	2312
+101	Sayali	96
+102	Mritunjay	36
+103	Manali	80
+104	swamiji	70
+105	Kavita	67
+107	Kajal	70
+109	Shital	65
+120	Didi	56
+128	Raj	88
+130	kajal	67
+131	sayali	89
+187	nilam	56
+abdraeada	1.25	abcd
+
+
+Roll No : 
+
+Record not Present
+
+Roll No 	Name 	Percentage
+100	123	2312

@@ -1,0 +1,8 @@
+Server modules should not be present in public folder.
+public folder should have only files given to client/browser as it is.
+
+For unavailable resources, response code should not 200.
+
+fix duplication in reading template
+
+convert form actions to post method
