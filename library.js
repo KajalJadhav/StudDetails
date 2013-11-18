@@ -1,27 +1,30 @@
 var http = require('http');
 var sd = {};
 sd.fs = require("fs");
-var list = sd.fs.readFileSync('./public/html/list.html','utf-8');
-var homeTemplate = sd.fs.readFileSync('./template','utf-8');
+var list_html = sd.fs.readFileSync('./public/html/list.html','utf-8');
+var message_html_add = sd.fs.readFileSync('./public/html/message.html','utf-8');
+var message_html_search = sd.fs.readFileSync('./public/html/message.html','utf-8');
+var message_html_list = sd.fs.readFileSync('./public/html/message.html','utf-8');
 var recordFileName = './record.txt';
-sd.records = sd.fs.readFileSync(recordFileName,'utf-8');
+sd.records = sd.fs.existsSync(recordFileName) && sd.fs.readFileSync(recordFileName,'utf-8') || '{}';
 sd.records = JSON.parse(sd.records);
 
-sd.readData = function(){
-  return sd.fs.readFileSync(recordFileName,'utf-8');
-};
+
 sd.writeData = function(text){
   sd.fs.writeFile(recordFileName,text,'utf-8');
 }
 sd.addDetail = function(roll,name,percentage){
   var details = {RollNo:'',Name:'',Percentage:''};
-  var result = {};
-  
+  var result = {};  
   details.RollNo = roll;
   details.Name = name || "";
   details.Percentage = percentage || "";
-  if(sd.records.hasOwnProperty(roll))
-      return "Record already Exists.......";
+  if(sd.records.hasOwnProperty(roll)){
+    result.added = sd.records[roll];
+    var existRecord = sd.list(JSON.stringify(result));
+    message_html_add = message_html_add.replace(/{message}/,('<h3>Record already Exists </h3>'+existRecord));
+    return message_html_add;
+  }
   sd.records[roll] = details;
   text = JSON.stringify(sd.records);
   sd.writeData(text);
@@ -39,21 +42,21 @@ var getFieldRecords = function(result,text){
   };
 };
 sd.list = function(text){
-  if(text == '{}') return 'No sd.records available';
+  if(text == '{}') 
+    return message_html_list.replace(/{message}/,'<h3>No student records available<h3/>');
   keysInRecord = Object.keys(JSON.parse(text));
   var text = JSON.parse(text);
   var result = [];
-  list = list.replace(/{home}/,homeTemplate);
   keysInRecord.forEach(getFieldRecords(result,text));
   var temp = result.join('');
-  return list.replace(/{list}/,temp);
+  return list_html.replace(/{list}/,temp);
 };
 
 sd.searchRecord = function(record,fieldValue){
   var data = JSON.parse(record);
   var result = {};
   if(!data.hasOwnProperty(fieldValue))
-    return "Record not Present";
+    return message_html_search.replace(/{message}/,'<h3> Record not Present </h3>');
   result[fieldValue] = data[fieldValue];
   return sd.list(JSON.stringify(result));
 };

@@ -9,8 +9,8 @@ var numValidation = function(evt){
 var validatePercentage = function(){
 	var percent = document.getElementById("percent").value;
 	if(percent<0||percent>100){
-		alert(' It"s invalid...');
-		return false
+		alert(' It"s invalid Percentage...');
+		return false;
 	};
 	return true;
 };

@@ -1,19 +1,21 @@
 <html>
-<head>
-	<title>Student Details</title>
-	<link rel = "styleSheet" href = "./studentDetails.css">
-	<script type="text/javascript" src = './validate.js'></script>
-</head>
-<body>
-	<form action = "/add" method = "post">
-	{home}
-	<table><br/><br/><tr><td><h3><u> Adding details in record </u></td></tr></h3>
-		<tr><td>Roll No: </td>
-			<td><input type="text" name = "roll" onkeypress="return numValidation(event)" required /></td><br>
-		<tr><td>Name:	</td>
-			<td><input type="text" name = "name" /></td><br>
-		<tr><td>Percentage: </td>	
-			<td><input type="text" name = "per" id = "percent" onkeypress="return numValidation(event)"\></td><br>
-		<tr><td><input type = "submit" value = "add" onclick = "return validatePercentage()"/></td></tr>
-	</table></form><br/><br/><br/>
-</body>
+	<head>
+		<title>Student Details</title>
+		<link rel = "styleSheet" href = "./studentDetails.css">
+		<script type="text/javascript" src = './validate.js'></script>
+	</head>
+	<body>
+		{home}			
+		<form action = "/add" method = "post">
+			<table class = "functions"><tr><td colspan = "2"><h3><u> Adding details in record </u></td></tr></h3>
+				<tr><td>Roll No: </td>
+					<td><input type="text" class = "box" placeholder = "Roll" name = "roll" onkeypress="return numValidation(event)" required /></td><br>
+				<tr><td>Name:	</td>
+					<td><input type="text" class = "box"  placeholder = "Name"  name = "name" /></td><br>
+				<tr><td>Percentage: </td>	
+					<td><input type="text" class = "box" name = "per"  placeholder = "Percentage"  id = "percent" onkeypress="return numValidation(event)"\></td><br/>
+				<tr><td colspan = "2"><br/><center><input type = "submit" value = "Add Record" class = "btn" onclick = "return validatePercentage()"/></center></td></tr>
+			</table>
+		</form>
+	</body>
+</html>

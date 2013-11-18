@@ -1,7 +1,9 @@
-<h4> Student Details </h4>
-<ul class = "functions">
-	<li><a href = "/">Home</a></li>
-	<li><a href = "/add.html">Add</a></li>
-	<li><a href = "/list.html">Show </a></li>
-	<li><a href = "/search.html">Search</a></li>
-</ul>
+<h4>Student Details</h4>
+<table  width = "800px">
+	<tr>
+		<td width = "200px"><a href = "/">Home</a></td>
+		<td width = "200px"><a href = "/add.html">Add</a></td>
+		<td width = "200px"><a href = "/list.html">Show </a></td>
+		<td width = "200px"><a href = "/search.html">Search</a></td>
+	</tr>
+</table>

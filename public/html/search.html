@@ -1,14 +1,16 @@
 <html>
-<head>
-	<title>Student Details</title>
-	<link rel = "styleSheet" href = "./studentDetails.css">
-	<script type="text/javascript" src = './validate.js'></script>
-</head>
-<body>
-	{home}
-	<img src="./searchImg.jpg" align="right" alt="search" height="360" width="400">
-	<center><form action = "/search" method = "post">
-		Roll No : <input type = "text" name = "roll" onkeypress="return numValidation(event)" required><br>
-		<input type = "submit" value = "search">
-	</form></center> 
-</body>
+	<head>
+		<title>Student Details</title>
+		<link rel = "styleSheet" href = "./studentDetails.css">
+		<script type="text/javascript" src = './validate.js'></script>
+	</head>
+	<body>
+		{home}
+		<br/><br/><br/>
+		<form action = "/search" method = "post" class = "functions">
+			Roll No : <input type = "text" class = "box"  placeholder = "Roll" name = "roll" onkeypress="return numValidation(event)" required /><br/><br/>
+			<input type = "submit" class = "btn" value = "Search"/>
+		</form>
+		<img src="./searchImg.jpg" align="right" alt="search" height="360" width="400"/>
+	</body>
+</html>

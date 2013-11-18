@@ -2,20 +2,64 @@ body{
 	padding-left : 5em;
 	font-family : georagia,"Times New Romen",Times,serif;
 	color : 660033;
+	background: url("./image.jpg");
 }
+
 h4 {
 	font-family : courier;
 	font-color : 660033;
 	font-size : 400%;
+	text-align: center;
 }
 a{
 	font-family : Impact;
 	font-style: italic;
 	font-size : 200%;
 }
-table.functions{
-	text-align: center;
-	font-size: 22;
-	border: 2px solid black;
+a:hover {
+  color:#FFFFFF;
+}
+.links{
+	list-style-type: none;
+  	padding: 4;
+  	margin: 4;
+  	position: fixed;
+  	top: 7em;
+  	left: 2em;
+  	color:transparent;
+  	width: 10em
 }
 
+.functions{
+	font-size: 200%;
+	font-color: blue;
+}
+
+.btn:hover{
+	color: #564345;
+}
+
+.btn{
+	color: white;
+	width: 200px;
+	height: 30px;
+	font-size: 75%;
+    border-radius: 10px;
+    background: rgb(66, 184, 221);
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.box{
+	text-align: center;
+	color: black;
+	width: 300px;
+	height: 30px;
+	font-size: 75%;
+    border-radius: 10px;
+    text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);
+}
+
+.message{
+	font-weight: bold;
+	font-size: 100%;
+}
