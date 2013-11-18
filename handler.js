@@ -52,4 +52,18 @@ routes['POST/search'] = function(req,res){
 	req.on('data',onReadData);
 };
 
+routes['POST/delete'] = function(req,res){
+	var onReadData = function(input){
+		input = input + '&';
+  		var details = getPostValues(input);
+		var result = sd.removeRecord(JSON.stringify(sd.records),details[0]);
+		result = result.replace(/{home}/,homeTemplate);
+		res.writeHead(200, {"Content-Type": "text/html"});		
+		res.write(result);
+		res.end();
+	};
+	req.setEncoding('utf8');
+	req.on('data',onReadData);
+};
+
 exports.routes = routes;

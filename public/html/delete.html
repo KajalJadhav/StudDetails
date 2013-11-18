@@ -1,0 +1,22 @@
+<html>
+<head>
+	<title>Student Details</title>
+	<link rel = "styleSheet" href = "./studentDetails.css">
+	<script type="text/javascript" src = './validate.js'></script>
+</head>
+<body>
+	{home}
+	<br/><br/><br/>
+	<form action = "/delete" method = "post">
+		<table  class = "functions">
+			<tr><td>Roll No : </td>
+				<td><input type = "text" name = "roll" class = "box" placeholder = "Roll" onkeypress="return numValidation(event)" required></td>
+			</tr><br/>
+			<tr>
+				<td colspan = "2">
+					<center><input type = "submit" value = "Delete" class = "btn"></center>
+				</td>
+			</tr>
+		</table>
+	</form>
+</body>

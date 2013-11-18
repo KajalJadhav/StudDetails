@@ -3,6 +3,7 @@ var fs = require('fs');
 var home_page = fs.readFileSync('./public/html/index.html','utf-8');
 var add_page = fs.readFileSync('./public/html/add.html','utf-8');
 var search_page = fs.readFileSync('./public/html/search.html','utf-8');
+var delete_page = fs.readFileSync('./public/html/delete.html','utf-8');
 var studImage = fs.readFileSync('./public/images/students.jpg');
 var searchImg = fs.readFileSync('./public/images/searchImg.jpg');
 var bg = fs.readFileSync('./public/images/back.jpg');
@@ -30,6 +31,11 @@ static_handler['GET/add.html'] = function(req,res){
 static_handler['GET/search.html'] = function(req,res){
 	search_page = search_page.replace(/{home}/,homeTemplate);
 	writePage(search_page,"text/html",res);
+};
+
+static_handler['GET/delete.html'] = function(req,res){
+	delete_page = delete_page.replace(/{home}/,homeTemplate);
+	writePage(delete_page,"text/html",res);
 };
 
 static_handler['GET/students.jpg'] = function(req,res){

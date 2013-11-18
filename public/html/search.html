@@ -7,10 +7,17 @@
 	<body>
 		{home}
 		<br/><br/><br/>
-		<form action = "/search" method = "post" class = "functions">
-			Roll No : <input type = "text" class = "box"  placeholder = "Roll" name = "roll" onkeypress="return numValidation(event)" required /><br/><br/>
-			<input type = "submit" class = "btn" value = "Search"/>
-		</form>
+		<form action = "/search" method = "post">
+			<table  class = "functions">
+			<tr><td>Roll No : </td>
+				<td><input type = "text" class = "box"  placeholder = "Roll" name = "roll" onkeypress="return numValidation(event)" required /></td>
+			</tr><br/>
+			<tr>
+				<td colspan = "2">
+					<center><input type = "submit" class = "btn" value = "Search"/></center>
+				</td>
+			</tr>
+		</table>
 		<img src="./searchImg.jpg" align="right" alt="search" height="360" width="400"/>
 	</body>
 </html>

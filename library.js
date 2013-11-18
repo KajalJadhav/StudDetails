@@ -5,6 +5,7 @@ var list_html = sd.fs.readFileSync('./public/html/list.html','utf-8');
 var message_html_add = sd.fs.readFileSync('./public/html/message.html','utf-8');
 var message_html_search = sd.fs.readFileSync('./public/html/message.html','utf-8');
 var message_html_list = sd.fs.readFileSync('./public/html/message.html','utf-8');
+var message_html_delete = sd.fs.readFileSync('./public/html/message.html','utf-8');
 var recordFileName = './record.txt';
 sd.records = sd.fs.existsSync(recordFileName) && sd.fs.readFileSync(recordFileName,'utf-8') || '{}';
 sd.records = JSON.parse(sd.records);
@@ -58,6 +59,18 @@ sd.searchRecord = function(record,fieldValue){
   if(!data.hasOwnProperty(fieldValue))
     return message_html_search.replace(/{message}/,'<h3> Record not Present </h3>');
   result[fieldValue] = data[fieldValue];
+  return sd.list(JSON.stringify(result));
+};
+
+sd.removeRecord = function(record,fieldValue){
+  var record = JSON.parse(record);
+  var result = {};
+  if(!record.hasOwnProperty(fieldValue)) 
+    return message_html_delete.replace(/{message}/,'<h3> Record not Present </h3>');
+  result[fieldValue] = record[fieldValue];
+  delete record[fieldValue];
+  sd.records = record;
+  sd.writeData(JSON.stringify(record));
   return sd.list(JSON.stringify(result));
 };
 
