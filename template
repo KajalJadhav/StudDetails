@@ -2,9 +2,9 @@
 <table  width = "800px">
 	<tr>
 		<td width = "200px"><a href = "/">Home</a></td>
-		<td width = "200px"><a href = "/add.html">Add</a></td>
-		<td width = "200px"><a href = "/list.html">Show </a></td>
-		<td width = "200px"><a href = "/search.html">Search</a></td>
-		<td width = "200px"><a href = "/delete.html">Delete</a></td>
+		<td width = "200px"><a href = "/html/add.html">Add</a></td>
+		<td width = "200px"><a href = "/html/list.html">Show </a></td>
+		<td width = "200px"><a href = "/html/search.html">Search</a></td>
+		<td width = "200px"><a href = "/html/delete.html">Delete</a></td>
 	</tr>
 </table>

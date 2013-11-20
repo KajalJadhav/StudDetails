@@ -1,8 +1,8 @@
 <html>
 	<head>
 		<title>Student Details</title>
-		<link rel = "styleSheet" href = "./studentDetails.css">
-		<script type="text/javascript" src = './validate.js'></script>
+		<link rel = "styleSheet" href = "/css/studentDetails.css">
+		<script type="text/javascript" src = "/javascript/validation.js"></script>
 	</head>
 	<body>
 		{home}			
@@ -14,7 +14,7 @@
 					<td><input type="text" class = "box"  placeholder = "Name"  name = "name" /></td><br>
 				<tr><td>Percentage: </td>	
 					<td><input type="text" class = "box" name = "per"  placeholder = "Percentage"  id = "percent" onkeypress="return numValidation(event)"\></td><br/>
-				<tr><td colspan = "2"><br/><center><input type = "submit" value = "Add Record" class = "btn" onclick = "return validatePercentage()"/></center></td></tr>
+				<tr><td colspan = "2"><br/><center><input type = "submit" value = "Add Record" class = "btn" onclick = "return validateInputs()"/></center></td></tr>
 			</table>
 		</form>
 	</body>

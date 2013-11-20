@@ -2,7 +2,7 @@ body{
 	padding-left : 5em;
 	font-family : georagia,"Times New Romen",Times,serif;
 	color : 660033;
-	background: url("./image.jpg");
+	background: url("/images/back.jpg");
 }
 
 h4 {
@@ -16,6 +16,7 @@ a{
 	font-style: italic;
 	font-size : 200%;
 }
+
 a:hover {
   color:#FFFFFF;
 }
@@ -43,7 +44,8 @@ a:hover {
 	color: white;
 	width: 200px;
 	height: 30px;
-	font-size: 75%;
+	font-size: 20px;
+	font-weight: bold;
     border-radius: 10px;
     background: rgb(66, 184, 221);
     text-shadow: 0 1px 1px rgba(0, 0, 0, 0.2);

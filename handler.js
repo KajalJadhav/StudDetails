@@ -2,10 +2,8 @@ var routes = {};
 var fs = require('fs');
 var sd = require('./library.js').sd;
 var homeTemplate = fs.readFileSync('./template','utf-8');
-var add_page = fs.readFileSync('./public/html/add.html','utf-8');
-var message_html = sd.fs.readFileSync('./public/html/message.html','utf-8');
 
-routes['GET/list.html'] = function(req,res){
+routes['GET/html/list.html'] = function(req,res){
 	var result = sd.list(JSON.stringify(sd.records))
 	result = result.replace(/{home}/,homeTemplate);
 	res.writeHead(200, {"Content-Type": "text/html"});
@@ -58,6 +56,7 @@ routes['POST/delete'] = function(req,res){
   		var details = getPostValues(input);
 		var result = sd.removeRecord(JSON.stringify(sd.records),details[0]);
 		result = result.replace(/{home}/,homeTemplate);
+		result = result.replace(/{home}/,'');
 		res.writeHead(200, {"Content-Type": "text/html"});		
 		res.write(result);
 		res.end();
